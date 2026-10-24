@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Varo Store · PPOB and game top-up store</title>
+<meta name="description" content="Varo Store: a PPOB and game top-up store for Kempas, Indragiri Hilir, Riau. Online shop, tablet store kasir and owner panel in one system. A product of Ksatria Bintang Samudra, built for PT Luxavero Teknologi Indonesia.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Varo Store · PPOB and game top-up store">
+<meta property="og:description" content="Online shop, store kasir and owner panel in one system, for a village store in Riau.">
+<meta property="og:image" content="https://kstriabintang.github.io/varo-store-showcase/img/store-home-desktop.webp">
+<meta name="theme-color" content="#120a17">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --night-950: #120a17;
+  --night-900: #1a0f20;
+  --night-850: #1f1327;
+  --night-800: #24152c;
+  --night-700: #3a2645;
+  --night-600: #574066;
+  --plum: #2a1a2f;
+  --aubergine: #3b1f47;
+  --mist: #f3ecf6;
+  --haze: #b8a9bf;
+  --haze-2: #8f7f98;
+  --gold: #e9b444;
+  --gold-300: #f5d68a;
+  --gold-700: #a9781a;
+  --orchid: #a35cc9;
+  --orchid-300: #dcb4f4;
+  --ok-300: #7ddcb0;
+  --line: rgb(243 236 246 / 0.09);
+  --line-2: rgb(243 236 246 / 0.14);
+  --card: rgb(36 21 44 / 0.72);
+  --shadow: 0 30px 70px -36px rgb(0 0 0 / 0.95);
+  --sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --max: 1180px;
+  --gutter: clamp(16px, 4vw, 40px);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background: var(--night-950);
+  color: var(--mist);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--gold-300); text-decoration: none; }
+a:hover { color: var(--gold); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+::selection { background: rgb(233 180 68 / 0.32); color: #fff; }
+h1, h2, h3 { line-height: 1.08; letter-spacing: -0.025em; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--gold); color: var(--night-950); padding: 8px 14px; border-radius: 10px; font-weight: 700; z-index: 50; }
+.skip:focus { left: 12px; }
+
+/* ---------- nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 40;
+  background: rgb(18 10 23 / 0.82);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; gap: 20px; min-height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--mist); font-size: 18px; letter-spacing: -0.02em; }
+.brand:hover { color: var(--mist); }
+.brand img { width: 38px; height: auto; }
+.brand .wm { font-weight: 500; }
+.brand .wm strong { font-weight: 800; }
+.nav nav { margin-left: auto; }
+.nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.nav ul a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 10px; color: var(--haze); font-size: 14px; font-weight: 600; }
+.nav ul a:hover { color: var(--mist); background: rgb(243 236 246 / 0.05); }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  font-size: 12.5px; font-weight: 700; color: var(--gold-300);
+  border: 1px solid rgb(233 180 68 / 0.35); background: rgb(233 180 68 / 0.08);
+  padding: 7px 12px; border-radius: 999px;
+}
+.pill svg { width: 14px; height: 14px; }
+@media (max-width: 900px) { .nav nav { display: none; } .nav .pill { margin-left: auto; } }
+
+/* ---------- type ---------- */
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+.eyebrow::before { content: ""; width: 26px; height: 2px; border-radius: 2px; background: var(--gold); flex: none; }
+.section { position: relative; padding-block: clamp(56px, 7vw, 92px); }
+.section h2 { font-size: clamp(28px, 4.2vw, 44px); font-weight: 800; margin: 14px 0 14px; }
+.lead { font-size: clamp(15.5px, 1.6vw, 18px); color: var(--haze); max-width: 62ch; }
+.section-head { max-width: 760px; margin-bottom: clamp(32px, 4vw, 48px); }
+.center { text-align: center; margin-inline: auto; }
+.center .lead { margin-inline: auto; }
+.gold { color: var(--gold-300); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---------- hero ---------- */
+.hero { position: relative; isolation: isolate; padding-block: clamp(40px, 6vw, 88px) clamp(40px, 6vw, 72px); }
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(900px 520px at 85% -10%, rgb(163 92 201 / 0.28), transparent 62%),
+    radial-gradient(760px 480px at -10% 30%, rgb(233 180 68 / 0.12), transparent 60%),
+    linear-gradient(180deg, var(--night-900), var(--night-950));
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.55;
+  background-image: linear-gradient(45deg, rgb(233 180 68 / 0.045) 1px, transparent 1px), linear-gradient(-45deg, rgb(233 180 68 / 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent 95%);
+  mask-image: linear-gradient(180deg, #000 30%, transparent 95%);
+}
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.hero h1 { font-size: clamp(36px, 5.6vw, 64px); font-weight: 800; margin: 18px 0 18px; }
+.hero h1 em { font-style: normal; color: var(--gold-300); }
+.hero .lead { margin-bottom: 28px; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px;
+  border-radius: 14px; font-weight: 700; font-size: 15px; border: 1px solid transparent;
+}
+.btn-gold { background: linear-gradient(180deg, var(--gold-300), var(--gold)); color: #1b0f21; box-shadow: 0 14px 30px -16px rgb(233 180 68 / 0.8); }
+.btn-gold:hover { color: #1b0f21; filter: brightness(1.05); }
+.btn-ghost { border-color: var(--line-2); color: var(--mist); background: rgb(243 236 246 / 0.03); }
+.btn-ghost:hover { color: var(--mist); border-color: rgb(233 180 68 / 0.45); }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 32px; }
+.stat { border: 1px solid var(--line); background: var(--card); border-radius: 16px; padding: 14px 14px 12px; }
+.stat b { display: block; font-size: clamp(20px, 2.4vw, 26px); font-weight: 800; color: var(--gold-300); line-height: 1.1; }
+.stat span { font-size: 12.5px; color: var(--haze); line-height: 1.35; display: block; margin-top: 4px; }
+
+/* devices */
+.stage { position: relative; padding-bottom: 8%; padding-right: 6%; }
+.browser {
+  border-radius: 16px; overflow: hidden; background: var(--night-850);
+  border: 1px solid var(--line-2); box-shadow: var(--shadow), 0 0 80px -40px rgb(163 92 201 / 0.55);
+}
+.browser .bar { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: rgb(243 236 246 / 0.04); border-bottom: 1px solid var(--line); }
+.browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--night-600); }
+.browser .bar i:first-child { background: #e0705c; } .browser .bar i:nth-child(2) { background: var(--gold); } .browser .bar i:nth-child(3) { background: var(--ok-300); }
+a.browser, a.tablet { display: block; color: inherit; }
+.browser img { width: 100%; }
+.phone {
+  width: 100%; padding: 7px; border-radius: 34px;
+  background: linear-gradient(160deg, #4a3651, #1a0f20 70%);
+  box-shadow: 0 40px 70px -34px rgb(0 0 0 / 0.95), 0 0 60px -30px rgb(233 180 68 / 0.45), inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+.phone img { width: 100%; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; border-radius: 27px; background: var(--night-900); }
+.stage .phone { position: absolute; right: 0; bottom: 0; width: 23%; }
+.tablet {
+  padding: 9px; border-radius: 24px; background: linear-gradient(160deg, #4a3651, #1a0f20 70%);
+  box-shadow: var(--shadow), inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+.tablet img { border-radius: 16px; width: 100%; }
+
+/* ---------- what ---------- */
+.cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card {
+  position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--card);
+  border-radius: 20px; padding: 24px 22px 24px; box-shadow: var(--shadow);
+}
+.card::before { content: ""; position: absolute; inset: 0 0 auto; height: 1px; background: linear-gradient(90deg, transparent, rgb(233 180 68 / 0.45), transparent); }
+.card h3 { font-size: 18px; font-weight: 800; margin: 14px 0 8px; }
+.card p { color: var(--haze); font-size: 14.5px; line-height: 1.6; }
+.icon {
+  width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center;
+  background: rgb(233 180 68 / 0.12); border: 1px solid rgb(233 180 68 / 0.28); color: var(--gold-300);
+}
+.icon svg { width: 22px; height: 22px; }
+
+/* ---------- feature rows ---------- */
+.band { background: linear-gradient(180deg, var(--night-950), var(--night-900) 50%, var(--night-950)); }
+.feature { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.feature.flip { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr); }
+.feature.flip .copy { order: 2; }
+.copy h2 { margin-top: 12px; }
+.ticks { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
+.ticks li { position: relative; padding-left: 30px; color: var(--haze); font-size: 15px; }
+.ticks li b { color: var(--mist); font-weight: 700; }
+.ticks li::before {
+  content: ""; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; border-radius: 6px;
+  background: rgb(233 180 68 / 0.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5d68a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 12px no-repeat;
+  border: 1px solid rgb(233 180 68 / 0.3);
+}
+.duo { position: relative; padding-right: 22%; padding-bottom: 10%; }
+.duo .phone { position: absolute; right: 0; bottom: 0; width: 30%; }
+.cap { margin-top: 12px; font-size: 13px; color: var(--haze-2); }
+
+/* ---------- kasir ---------- */
+.kasir-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.shot figcaption { margin-top: 12px; font-size: 14px; color: var(--haze); }
+.shot figcaption b { display: block; color: var(--mist); font-size: 15px; margin-bottom: 2px; }
+figure { margin: 0; }
+.receipt-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: clamp(32px, 4vw, 48px); }
+.receipt { width: min(240px, 60vw); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); transform: rotate(2deg); }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.fact { border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; background: rgb(243 236 246 / 0.025); }
+.fact b { display: block; font-size: 15px; margin-bottom: 4px; }
+.fact span { font-size: 14px; color: var(--haze); }
+
+/* ---------- panel gallery ---------- */
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 28px); }
+.gallery .wide { grid-column: 1 / -1; }
+.gallery a { display: block; border-radius: 16px; }
+
+/* ---------- bot ---------- */
+.bot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.chat {
+  border-radius: 24px; border: 1px solid var(--line-2); background: linear-gradient(180deg, #1f1327, #160d1b);
+  padding: 18px; box-shadow: var(--shadow);
+}
+.chat-head { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.chat-head .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--plum); display: grid; place-items: center; border: 1px solid var(--line-2); }
+.chat-head .avatar img { width: 26px; }
+.chat-head b { display: block; font-size: 15px; }
+.chat-head span { font-size: 12.5px; color: var(--haze); }
+.bubble {
+  margin: 16px 0 14px; max-width: 92%; padding: 12px 14px; border-radius: 16px 16px 16px 4px;
+  background: rgb(243 236 246 / 0.06); border: 1px solid var(--line); font-size: 14px; color: var(--mist);
+}
+.bubble p + p { margin-top: 6px; }
+.bubble .muted { color: var(--haze); font-size: 13px; }
+.keys { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.keys span {
+  display: flex; align-items: center; justify-content: center; text-align: center; min-height: 44px; padding: 8px;
+  border-radius: 12px; background: rgb(243 236 246 / 0.07); border: 1px solid var(--line); font-size: 13.5px; font-weight: 600;
+}
+.keys .full { grid-column: 1 / -1; }
+.pdf { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: 20px; align-items: center; margin-top: 8px; }
+.pdf img { border-radius: 10px; box-shadow: var(--shadow); }
+
+/* ---------- engineering ---------- */
+.eng-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.eng-grid .card .n {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 24px; padding: 0 8px;
+  border-radius: 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.05em; color: var(--gold-300);
+  background: rgb(233 180 68 / 0.12); border: 1px solid rgb(233 180 68 / 0.28);
+}
+.speed { margin-top: 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.speed .card { padding: 22px 20px; }
+.speed b { display: block; font-size: clamp(26px, 3vw, 34px); font-weight: 800; color: var(--gold-300); line-height: 1.1; }
+.speed small { display: block; font-size: 12.5px; color: var(--haze-2); margin-top: 2px; }
+.speed p { font-size: 14px; color: var(--haze); margin-top: 8px; }
+code { font-family: var(--mono); font-size: 0.86em; color: var(--gold-300); background: rgb(233 180 68 / 0.1); padding: 1px 6px; border-radius: 6px; }
+
+/* ---------- architecture ---------- */
+.arch {
+  border: 1px solid var(--line); border-radius: 24px; padding: clamp(18px, 3vw, 32px);
+  background: radial-gradient(600px 300px at 50% 0%, rgb(163 92 201 / 0.12), transparent 70%), rgb(36 21 44 / 0.5);
+}
+.arch-row { display: grid; gap: 12px; }
+.arch-row.clients { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.arch-row.core { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr); align-items: stretch; }
+.arch-row.ext { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.node { border-radius: 14px; border: 1px solid var(--line-2); background: var(--night-850); padding: 14px 16px; }
+.node b { display: block; font-size: 14.5px; }
+.node span { display: block; font-size: 12.5px; color: var(--haze); line-height: 1.45; margin-top: 2px; }
+.node.hub { border-color: rgb(233 180 68 / 0.5); background: linear-gradient(180deg, rgb(233 180 68 / 0.12), rgb(233 180 68 / 0.04)); }
+.node.hub b { color: var(--gold-300); }
+.flow { display: grid; place-items: center; height: 34px; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.flow::before { content: ""; width: 2px; height: 100%; background: linear-gradient(180deg, rgb(233 180 68 / 0.1), rgb(233 180 68 / 0.7)); grid-area: 1 / 1; }
+.flow span { grid-area: 1 / 1; background: #1d1124; padding: 0 10px; }
+
+/* ---------- stack ---------- */
+.stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.stack .card h3 { margin-top: 0; font-size: 15px; color: var(--gold-300); letter-spacing: 0.04em; text-transform: uppercase; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.chips span { font-size: 13.5px; font-weight: 600; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line-2); background: rgb(243 236 246 / 0.04); color: var(--mist); }
+
+/* ---------- note + footer ---------- */
+.note {
+  display: flex; gap: 16px; align-items: flex-start; border: 1px solid rgb(233 180 68 / 0.3); background: rgb(233 180 68 / 0.06);
+  border-radius: 20px; padding: 20px 22px;
+}
+.note .icon { flex: none; }
+.note p { color: var(--haze); font-size: 15px; }
+.note p b { color: var(--mist); }
+footer { border-top: 1px solid var(--line); padding-block: 40px 48px; background: var(--night-950); }
+.foot { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; justify-content: space-between; }
+.foot p { color: var(--haze); font-size: 14px; }
+.foot .small { font-size: 13px; color: var(--haze-2); }
+
+/* ---------- reveal (decorative: progressive enhancement only) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes rise { from { opacity: 0; translate: 0 28px; } }
+    .reveal { animation: rise linear backwards; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+  }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1080px) {
+  .eng-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .speed { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .hero-grid, .feature, .feature.flip, .bot-grid { grid-template-columns: minmax(0, 1fr); }
+  .feature.flip .copy { order: 0; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cards3 { grid-template-columns: minmax(0, 1fr); }
+  .kasir-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kasir-grid .shot:last-child { grid-column: 1 / -1; }
+  .receipt-row { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .arch-row.core { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .gallery, .kasir-grid, .eng-grid, .speed, .stack, .facts { grid-template-columns: minmax(0, 1fr); }
+  .kasir-grid .shot:last-child { grid-column: auto; }
+  .arch-row.clients, .arch-row.ext { grid-template-columns: minmax(0, 1fr); }
+  .pdf { grid-template-columns: minmax(0, 1fr); }
+  .pdf img { max-width: 240px; margin-inline: auto; }
+  .note { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Varo Store, back to top">
+      <img src="img/varo-logo-light.webp" alt="" width="512" height="445">
+      <span class="wm"><strong>Varo</strong> Store</span>
+    </a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#shop">Online shop</a></li>
+        <li><a href="#kasir">Store kasir</a></li>
+        <li><a href="#panel">Owner panel</a></li>
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#stack">Stack</a></li>
+      </ul>
+    </nav>
+    <span class="pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      Source private
+    </span>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================ hero ============================ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">PPOB · game top-up · store kasir</span>
+      <h1>One system for a village store <em>in Riau</em>.</h1>
+      <p class="lead">Varo Store sells phone credit, data, electricity tokens, e-wallet top-ups, game vouchers and bill payments in
+        Kempas, Indragiri Hilir, Riau: at the counter on a tablet kasir, and online from the customer's phone. The owner runs
+        both from one panel and a Telegram bot.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="#shop">See the screens</a>
+        <a class="btn btn-ghost" href="#engineering">How the money stays safe</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b class="num">512</b><span>products in the catalogue</span></div>
+        <div class="stat"><b class="num">50</b><span>games with official art</span></div>
+        <div class="stat"><b class="num">65</b><span>bill providers</span></div>
+        <div class="stat"><b class="num">1667</b><span>automated backend tests</span></div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="browser">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="img/store-home-desktop.webp" alt="Varo Store online shop home page with the Mobile Legends banner" width="2880" height="1800" fetchpriority="high">
+      </div>
+      <div class="phone">
+        <img src="img/store-order-success-phone.webp" alt="Order page on a phone: top up succeeded" width="1170" height="2532" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ what ============================ -->
+<section class="section" id="what">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">What it is</span>
+      <h2>Two ways to sell, one place to see the money</h2>
+      <p class="lead">Customers either walk in or order from their phone. Every order, every rupiah in the cash drawer and every
+        item on the shelf ends up in the same panel.</p>
+    </div>
+    <div class="cards3">
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 4.5 4h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>At the store</h3>
+        <p>A tablet kasir sells digital products, goods and bills in one cart, takes cash, the store's QRIS or a bank transfer,
+          and prints a 58 or 80 mm receipt. Every sale lands in the open shift.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
+        <h3>Online</h3>
+        <p>Customers pick a product, pay the store's QRIS with a unique amount, and the order is sent to the supplier as soon as
+          staff confirm the payment. The order page updates itself.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
+        <h3>For the owner</h3>
+        <p>A web panel and a Telegram bot: what needs action, today's and this month's numbers, stock, payment matching against
+          the bank statement, and an audit trail nobody can quietly edit.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ shop ============================ -->
+<section class="section band" id="shop">
+  <div class="wrap feature">
+    <div class="copy reveal">
+      <span class="eyebrow">Online shop</span>
+      <h2>Every category in one look</h2>
+      <p class="lead">Credit, data, electricity tokens, e-wallets, game vouchers and bills, in the store's plum and gold.</p>
+      <ul class="ticks">
+        <li><b>Operator detected from the number</b> as the customer types it.</li>
+        <li><b>Game account fields per game</b>: User ID and Zone ID for Mobile Legends, a player ID for others.</li>
+        <li><b>A receipt preview before paying</b>, so the customer sees exactly what they buy.</li>
+        <li><b>Official artwork and logos</b> for 50 games, operators, e-wallets and billers.</li>
+      </ul>
+    </div>
+    <div class="duo reveal">
+      <a class="browser" href="img/store-voucher-game-desktop.webp" aria-label="Open the game voucher screenshot">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="img/store-voucher-game-desktop.webp" alt="Game voucher grid with official game art" width="2400" height="1500" loading="lazy" decoding="async">
+      </a>
+      <div class="phone">
+        <img src="img/store-game-mobile-legends-phone.webp" alt="Mobile Legends page on a phone with User ID, Zone ID and the chosen diamonds" width="1170" height="5160" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pay">
+  <div class="wrap feature flip">
+    <div class="copy reveal">
+      <span class="eyebrow">Payment and tracking</span>
+      <h2>Pay by QRIS, watch the order finish</h2>
+      <p class="lead">The store uses its own QRIS. Each order asks for a slightly unique amount, so staff can match every payment in
+        the bank statement.</p>
+      <ul class="ticks">
+        <li><b>30-minute countdown</b> and step-by-step instructions next to the code.</li>
+        <li><b>Live order page</b>: created, paid, processing, done, with the supplier's reference number.</li>
+        <li><b>Track an order</b> by the code on the receipt, or from the list of orders placed on this device.</li>
+        <li><b>Masked numbers</b> on every public page and receipt.</li>
+      </ul>
+    </div>
+    <div class="duo reveal">
+      <a class="browser" href="img/store-order-qris-desktop.webp" aria-label="Open the QRIS payment screenshot">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="img/store-order-qris-desktop.webp" alt="Waiting for a QRIS payment, with the exact amount, countdown and receipt" width="2880" height="1800" loading="lazy" decoding="async">
+      </a>
+      <div class="phone">
+        <img src="img/store-cek-pesanan-phone.webp" alt="Track an order on a phone: orders placed from this device" width="1170" height="2532" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section band" id="bills">
+  <div class="wrap feature">
+    <div class="copy reveal">
+      <span class="eyebrow">Bills</span>
+      <h2>Check first, pay when it is right</h2>
+      <p class="lead">Electricity, 30 water utilities, health and employment insurance, internet, postpaid mobile, cable TV, gas and
+        instalments.</p>
+      <ul class="ticks">
+        <li><b>Amount, fee and total shown</b> before anything is paid.</li>
+        <li><b>The check is bound</b> to that product and customer number, for that day only.</li>
+        <li><b>Paid means paid</b>: a bill only counts once the supplier returns its serial number.</li>
+      </ul>
+    </div>
+    <div class="duo reveal">
+      <a class="browser" href="img/store-tagihan-pdam-desktop.webp" aria-label="Open the water utility picker screenshot">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="img/store-tagihan-pdam-desktop.webp" alt="Choosing a water utility before entering the customer number" width="2880" height="1800" loading="lazy" decoding="async">
+      </a>
+      <div class="phone">
+        <img src="img/store-tagihan-pdam-phone.webp" alt="Water utility picker on a phone" width="1170" height="2532" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ kasir ============================ -->
+<section class="section" id="kasir">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Store kasir</span>
+      <h2>A tablet at the counter</h2>
+      <p class="lead">Built for a 1024 × 768 tablet. One cart for digital products, goods and bills; cash, the store's QRIS or bank
+        transfer; round prices in whole thousands that never go below the online price.</p>
+    </div>
+    <div class="kasir-grid">
+      <figure class="shot reveal">
+        <a class="tablet" href="img/kasir-digital-cart.webp" aria-label="Open the digital product screenshot"><img src="img/kasir-digital-cart.webp" alt="Kasir: phone credit chosen for a number, with a USB cable in the same cart" width="2048" height="1536" loading="lazy" decoding="async"></a>
+        <figcaption><b>Digital products</b>Operator from the number, store prices, mixed cart.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <a class="tablet" href="img/kasir-barang-scan.webp" aria-label="Open the barcode screenshot"><img src="img/kasir-barang-scan.webp" alt="Kasir: goods added by scanning barcodes" width="2048" height="1536" loading="lazy" decoding="async"></a>
+        <figcaption><b>Goods by barcode</b>A scan goes straight into the cart; quantities adjust.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <a class="tablet" href="img/kasir-tagihan-pdam.webp" aria-label="Open the bill screenshot"><img src="img/kasir-tagihan-pdam.webp" alt="Kasir: a water bill checked for the local utility, with the total in the cart" width="2048" height="1536" loading="lazy" decoding="async"></a>
+        <figcaption><b>Bills at the kasir</b>Pick the utility, check the bill, the total goes into the cart.</figcaption>
+      </figure>
+    </div>
+    <div class="receipt-row">
+      <div class="facts">
+        <div class="fact reveal"><b>Number check</b><span>Before money moves, the destination is shown in large digits for the customer to confirm.</span></div>
+        <div class="fact reveal"><b>Shifts and the drawer</b><span>Opening float, cash sales, refunds, cash in and out. Closing a shift locks it.</span></div>
+        <div class="fact reveal"><b>58 or 80 mm</b><span>Each device remembers its printer's paper; the receipt can be previewed before paying.</span></div>
+        <div class="fact reveal"><b>Cancel goods, not digits</b><span>A cancelled goods sale puts items back on the shelf; a non-cash refund is flagged for the owner.</span></div>
+      </div>
+      <figure class="receipt reveal">
+        <img src="img/kasir-struk-58mm.webp" alt="58 mm receipt preview with a phone credit and a USB cable" width="608" height="1132" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ panel ============================ -->
+<section class="section band" id="panel">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Owner panel</span>
+      <h2>What needs action comes first</h2>
+      <p class="lead">Payments waiting, refunds owed, unmatched payments and low stock sit at the top; the numbers come after.
+        Staff see only the menus and figures their permissions allow.</p>
+    </div>
+    <div class="gallery">
+      <figure class="shot wide reveal">
+        <a class="browser" href="img/panel-ringkasan.webp" aria-label="Open the summary screenshot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="img/panel-ringkasan.webp" alt="Summary: payments waiting, refunds owed, unmatched payments and low stock" width="2880" height="1560" loading="lazy" decoding="async"></a>
+        <figcaption><b>Needs action</b>The most urgent item on top: a customer is waiting for their payment to be confirmed.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <a class="browser" href="img/panel-ringkasan-staf.webp" aria-label="Open the numbers screenshot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="img/panel-ringkasan-staf.webp" alt="Today's counts per business line and a 7-day chart" width="2880" height="1800" loading="lazy" decoding="async"></a>
+        <figcaption><b>Today and the last 7 days</b>Per business line, online versus store.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <a class="browser" href="img/panel-transaksi-staf.webp" aria-label="Open the transactions screenshot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="img/panel-transaksi-staf.webp" alt="Transactions from the online shop and the store kasir" width="2880" height="1800" loading="lazy" decoding="async"></a>
+        <figcaption><b>Transactions</b>Online and store in one list, filterable and exportable.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <a class="browser" href="img/panel-detail-pesanan.webp" aria-label="Open the order timeline screenshot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="img/panel-detail-pesanan.webp" alt="One order with its full process timeline" width="2880" height="1800" loading="lazy" decoding="async"></a>
+        <figcaption><b>Order timeline</b>Created, paid, sent, the supplier's answer, every status check.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <a class="browser" href="img/panel-cocokkan-pembayaran.webp" aria-label="Open the payment matching screenshot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="img/panel-cocokkan-pembayaran.webp" alt="Matching QRIS and transfer payments against the bank statement" width="2880" height="1800" loading="lazy" decoding="async"></a>
+        <figcaption><b>Payment matching</b>Every QRIS and transfer ticked off against the bank statement.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <a class="browser" href="img/panel-banner-toko.webp" aria-label="Open the store banners screenshot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="img/panel-banner-toko.webp" alt="Store banners with desktop and phone images, order and schedule" width="2880" height="1800" loading="lazy" decoding="async"></a>
+        <figcaption><b>Store banners</b>Desktop and phone images, order, schedule, optional popup.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <a class="browser" href="img/panel-pengaturan-toko.webp" aria-label="Open the settings screenshot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="img/panel-pengaturan-toko.webp" alt="Store settings: identity, opening hours, bank account and payment methods" width="2880" height="1800" loading="lazy" decoding="async"></a>
+        <figcaption><b>Settings</b>Identity, opening hours, payment methods, the store's QRIS.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ stock + audit ============================ -->
+<section class="section" id="audit">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Stock and audit</span>
+      <h2>Goods on the shelf, and a trail nobody can rewrite</h2>
+      <p class="lead">Physical goods have barcodes, low-stock thresholds, deliveries, stock counts and write-offs. Every staff action
+        is stored as a hash chain that can be verified with one button.</p>
+    </div>
+    <div class="gallery">
+      <figure class="shot reveal">
+        <a class="browser" href="img/panel-stok-staf.webp" aria-label="Open the stock screenshot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="img/panel-stok-staf.webp" alt="Stock: items with barcodes, levels and low-stock warnings" width="2880" height="1800" loading="lazy" decoding="async"></a>
+        <figcaption><b>Stock</b>Levels against each item's threshold; deliveries, counts and write-offs from the card.</figcaption>
+      </figure>
+      <figure class="shot reveal">
+        <a class="browser" href="img/panel-audit.webp" aria-label="Open the audit screenshot"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><img src="img/panel-audit.webp" alt="Audit: the hash chain verified intact, with the latest hash" width="2880" height="1800" loading="lazy" decoding="async"></a>
+        <figcaption><b>Audit</b>"Records intact": nothing changed, deleted or inserted, and the latest hash to compare with Telegram.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ bot + reports ============================ -->
+<section class="section band" id="bot">
+  <div class="wrap bot-grid">
+    <div class="reveal">
+      <span class="eyebrow">Telegram bot and reports</span>
+      <h2>The business, from the owner's phone</h2>
+      <p class="lead">A management bot with a fixed keyboard reads the same numbers as the panel. It also pushes what matters:
+        orders and refunds, low stock, low supplier balance, staff logins, a daily summary at 21:00 and a monthly report on
+        the 1st.</p>
+      <div class="pdf" style="margin-top:28px">
+        <img src="img/pdf-daftar-harga-pajang.webp" alt="Page 1 of the wall price list PDF" width="1190" height="1683" loading="lazy" decoding="async">
+        <p class="lead" style="font-size:15px">Reports in the panel, as CSV and as PDF: the monthly report, an internal price list,
+          and a wall price list for the store in A4 or as an A3 poster. Every transaction is also mirrored to Google Sheets, one
+          tab per business line, with numbers masked and no customer contact data.</p>
+      </div>
+    </div>
+    <div class="chat reveal" role="img" aria-label="Illustration of the Telegram bot keyboard">
+      <div class="chat-head">
+        <div class="avatar"><img src="img/varo-logo-light.webp" alt="" width="512" height="445" loading="lazy" decoding="async"></div>
+        <div><b>Varo Store bot</b><span>management menu</span></div>
+      </div>
+      <div class="bubble">
+        <p><b>📊 Ringkasan Hari Ini</b></p>
+        <p class="muted">Omzet, modal, untung, transaksi, online vs store: the same figures as the panel, per business line.</p>
+      </div>
+      <div class="keys" aria-hidden="true">
+        <span class="full">📊 Ringkasan Hari Ini</span>
+        <span>📅 Bulan Ini</span><span>🗂 Per Lini Usaha</span>
+        <span>⚠️ Perlu Tindakan</span><span>💰 Saldo &amp; Deposit</span>
+        <span>🏪 Shift &amp; Kas</span><span>📦 Stok</span>
+        <span class="full">📄 Laporan PDF</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ engineering ============================ -->
+<section class="section" id="engineering">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Engineering highlights</span>
+      <h2>Money moves once, and it is written down</h2>
+      <p class="lead">The interesting work in a small store is not the shop window; it is making sure a double tap, a dropped
+        connection or a late supplier answer never costs anyone money.</p>
+    </div>
+    <div class="eng-grid">
+      <article class="card reveal"><span class="n">01</span><h3>Idempotency keys</h3><p>The pay button, kasir checkout and stock movements send an idempotency key; a repeat returns the first result. Each order reaches the supplier exactly once with its own reference, and an unclear result is only ever checked, never re-sent.</p></article>
+      <article class="card reveal"><span class="n">02</span><h3>Bill-token binding</h3><p>Checking a bill returns a token bound to that product and customer number, for that day. Paying a different number with it is refused; a bill counts as paid only with the supplier's serial number.</p></article>
+      <article class="card reveal"><span class="n">03</span><h3>Locked shift close</h3><p>Closing a kasir shift is atomic and locks the drawer. A sale or refund that arrives after the cash was counted is refused or flagged as a refund owed, so the drawer always matches.</p></article>
+      <article class="card reveal"><span class="n">04</span><h3>Audit hash chain</h3><p><code>hash = sha256(prev_hash . row)</code> under a single locked head row, with a unique index on <code>prev_hash</code> against forks. A verifier re-reads the chain; a nightly anchor sends the latest hash to Telegram.</p></article>
+      <article class="card reveal"><span class="n">05</span><h3>Held, not failed</h3><p>When a refusal is on the store's side, the order is held and retried instead of failed. A late success on an order already failed is never applied automatically: it goes to the owner for review.</p></article>
+      <article class="card reveal"><span class="n">06</span><h3>Permissions on the server</h3><p>Per-person permissions are checked by the router and again by every API route. Cost and profit are not in the response at all for staff without the reports permission.</p></article>
+    </div>
+    <div class="speed">
+      <div class="card reveal"><b class="num">0.014 s</b><small>was 0.45 s</small><p>Median for the public catalogue, built once a minute and rebuilt on any price change.</p></div>
+      <div class="card reveal"><b class="num">0.019 s</b><small>was 0.43 s</small><p>Median for the kasir catalogue with in-store prices.</p></div>
+      <div class="card reveal"><b class="num">0.094 s</b><small>was 0.31 s</small><p>Median for the owner's summary.</p></div>
+      <div class="card reveal"><b class="num">1667</b><small>backend tests + 8 frontend</small><p>Supplier calls faked, money flows, bills, permissions, stock, audit, Telegram, Sheets, PDF.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ architecture ============================ -->
+<section class="section band" id="architecture">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Architecture</span>
+      <h2>One SPA, one API, two queues</h2>
+      <p class="lead">Paid orders never wait behind slow jobs: orders run on their own queue, while Telegram, email, Sheets and PDF
+        rendering run on another. The supplier sits behind a single gateway that owns the mode, the call budget, a circuit
+        breaker and the hold-and-retry rules.</p>
+    </div>
+    <div class="arch reveal" role="img" aria-label="Architecture: the Vue SPA calls the Laravel API, which stores data in MySQL and queues jobs for two workers that talk to the supplier, Telegram and Google Sheets.">
+      <div class="arch-row clients">
+        <div class="node"><b>Online shop</b><span>Vue 3 SPA</span></div>
+        <div class="node"><b>Store kasir</b><span>Vue 3 SPA, tablet</span></div>
+        <div class="node"><b>Owner &amp; staff panel</b><span>Vue 3 SPA</span></div>
+      </div>
+      <div class="flow"><span>/api/v1 · Sanctum cookie</span></div>
+      <div class="arch-row core">
+        <div class="node"><b>Database</b><span>MySQL 8 / MariaDB in production, SQLite in development</span></div>
+        <div class="node hub"><b>Laravel 13 API</b><span>Orders, checkout, pricing, shifts, stock, reports, audit chain, permissions</span></div>
+        <div class="node"><b>Queue + scheduler</b><span>Worker for orders · worker for notifications · cron</span></div>
+      </div>
+      <div class="flow"><span>jobs and webhooks</span></div>
+      <div class="arch-row ext">
+        <div class="node"><b>PPOB supplier API</b><span>Orders, bill checks, status checks; signed webhook back</span></div>
+        <div class="node"><b>Telegram Bot API</b><span>Management bot, notifications, audit anchor</span></div>
+        <div class="node"><b>Google Sheets</b><span>Ledger rows via Apps Script, one tab per business line</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ stack ============================ -->
+<section class="section" id="stack">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Tech stack</span>
+      <h2>Boring where it should be</h2>
+    </div>
+    <div class="stack">
+      <div class="card reveal"><h3>Backend</h3><div class="chips"><span>PHP 8.5</span><span>Laravel 13</span><span>Sanctum</span><span>DomPDF</span><span>Database queue</span><span>PHPUnit</span></div></div>
+      <div class="card reveal"><h3>Frontend</h3><div class="chips"><span>Vue 3.5</span><span>Vue Router 4</span><span>TypeScript</span><span>Vite 8</span><span>Tailwind CSS 4</span><span>Plus Jakarta Sans</span></div></div>
+      <div class="card reveal"><h3>Data and integrations</h3><div class="chips"><span>MySQL 8 / MariaDB</span><span>SQLite (dev)</span><span>DigiFlazz API</span><span>Telegram Bot API</span><span>Google Apps Script</span><span>SMTP</span></div></div>
+      <div class="card reveal"><h3>Server and tooling</h3><div class="chips"><span>Ubuntu</span><span>Nginx</span><span>PHP-FPM</span><span>Supervisor</span><span>cron</span><span>Let's Encrypt</span><span>Playwright</span></div></div>
+    </div>
+    <div class="note reveal" style="margin-top:32px">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+      <p><b>Source code is private.</b> This page and its screenshots are the public showcase. The screenshots come from an isolated
+        copy of the application with seeded test data: no real customers, numbers or accounts. Varo Store is finished and tested,
+        and its next step is the move to a production server.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top" aria-label="Varo Store, back to top"><img src="img/varo-logo-light.webp" alt="" width="512" height="445" loading="lazy" decoding="async"><span class="wm"><strong>Varo</strong> Store</span></a>
+    <div>
+      <p>A product of <b>Ksatria Bintang Samudra</b> · Built for PT Luxavero Teknologi Indonesia</p>
+      <p class="small">© 2026 Ksatria Bintang Samudra · Source private</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

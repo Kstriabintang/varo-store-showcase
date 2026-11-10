@@ -22,10 +22,10 @@
 <img alt="MySQL" src="https://img.shields.io/badge/MySQL%20%C2%B7%20SQLite-2a1a2f?style=flat-square&logo=mysql&logoColor=e9b444">
 </p>
 <p>
-<img alt="Tests" src="https://img.shields.io/badge/tests-1667%20backend%20%2B%208%20frontend-e9b444?style=flat-square&labelColor=3b1f47">
-<img alt="Catalog" src="https://img.shields.io/badge/catalog-512%20products-e9b444?style=flat-square&labelColor=3b1f47">
+<img alt="Tests" src="https://img.shields.io/badge/tests-1%2C849%20backend-e9b444?style=flat-square&labelColor=3b1f47">
+<img alt="Catalog" src="https://img.shields.io/badge/catalog-5%2C900%2B%20products-e9b444?style=flat-square&labelColor=3b1f47">
 <img alt="Audit" src="https://img.shields.io/badge/audit-hash%20chain-e9b444?style=flat-square&labelColor=3b1f47">
-<img alt="Status" src="https://img.shields.io/badge/status-v4%20%C2%B7%20pre--launch-e9b444?style=flat-square&labelColor=3b1f47">
+<img alt="Status" src="https://img.shields.io/badge/status-live%20%C2%B7%20varostore.com-1f8b4c?style=flat-square&labelColor=3b1f47">
 </p>
 
 **A product of Ksatria Bintang Samudra** · Built for **PT Luxavero Teknologi Indonesia**
@@ -55,8 +55,9 @@ trip to town. Varo Store puts all of that in one place, for two kinds of custome
 The owner sees every order, every rupiah in the cash drawer, the stock on the shelf and an audit trail of every staff action,
 from a web panel and from a Telegram bot.
 
-The catalogue currently holds **512 products**: phone credit and data for every Indonesian operator, e-wallets, 50 games with
-official artwork, and 65 bill providers.
+The catalogue currently holds **5,900+ products**: phone credit and data for every Indonesian operator, e-wallets, 79 games
+with official artwork, electricity, and bill payments for hundreds of regions — water utilities, property tax, multifinance
+instalments and pay-TV.
 
 ---
 
@@ -187,7 +188,7 @@ price or product changes. Median API times went from 0.45 s to **0.014 s** (cata
 the kasir). The router hides what a person may not open and every API route checks again; cost and profit fields are simply not
 in the response for staff without the reports permission.
 
-**Tested** - **1667 automated backend tests** (supplier connection with a fake HTTP client, pricing, money flows, bills,
+**Tested** - **1,849 automated backend tests** (supplier connection with a fake HTTP client, pricing, money flows, bills,
 permissions, stock, audit chain, Telegram, Google Sheets, PDFs) plus 8 frontend unit tests. A responsive sweep checks every
 page at 390, 820, 1024 and 1366 px for sideways scroll, clipped text, small touch targets and broken images.
 
@@ -221,7 +222,7 @@ single gateway that owns the mode, the per-minute call budget, a circuit breaker
 
 ## Tech stack
 
-**Backend** PHP 8.5 · Laravel 13 · Sanctum · DomPDF · database queue · PHPUnit (1667 tests) · MySQL 8 / MariaDB · SQLite (dev)
+**Backend** PHP 8.5 · Laravel 13 · Sanctum · DomPDF · database queue · PHPUnit (1,849 tests) · MySQL 8 / MariaDB · SQLite (dev)
 **Frontend** Vue 3.5 · Vue Router 4 · TypeScript · Vite 8 · Tailwind CSS 4 · lucide icons · Plus Jakarta Sans
 **Integrations** PPOB supplier API (DigiFlazz) · Telegram Bot API · Google Apps Script (Sheets) · SMTP receipts
 **Server** Ubuntu · Nginx · PHP-FPM · Supervisor · cron · Let's Encrypt
